@@ -35,6 +35,7 @@ int main() {
     auto [tracktiveNet, tracktiveMessages] =
         loadCanFrames("/app/dbc-files/TractiveBus.dbc");
 
+    // load files
     std::ifstream logFile("/app/dump.log");
 
     std::ofstream outputFile("/app/output.txt");
@@ -110,6 +111,7 @@ std::pair<
     return {std::move(net), std::move(messages)};
 }
 
+// This function parses the data and writes it to the output file.
 void parseData(
         std::unordered_map<uint64_t, const dbcppp::IMessage *> &messageMap,
         std::vector<std::string> idAndPayloadVec,
@@ -152,13 +154,11 @@ void parseData(
 
             valStream.str("");
             valStream.clear();
-            // std::cout << timeStamp << ": " << sig.Name() << ": "
-            //     << sig.RawToPhys(sig.Decode(data)) << "\n";
         }
     }
 }
 
-// converts the char to it's specified hex val using the ascii representation.
+// converts the char to its specified hex val using the ascii representation.
 uint8_t convertToHex(char c) {
     if (c >= '0' && c <= '9') return c - '0';
     if (c >= 'A' && c <= 'F') return 10 + (c - 'A');
