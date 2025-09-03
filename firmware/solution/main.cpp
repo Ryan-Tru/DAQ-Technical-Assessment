@@ -6,6 +6,7 @@
 #include <utility>
 #include <sstream>
 #include <vector>
+#include <cmath>
 
 #include "dbcppp/CApi.h"
 #include "dbcppp/Network.h"
@@ -140,11 +141,19 @@ void parseData(
         const dbcppp::IMessage* msg = findMsg->second;
         std::string extractedData{};
         std::ostringstream valStream{};
+        double value{};
 
         for (const dbcppp::ISignal& sig : msg->Signals()) {
-            //get formatted val
-            valStream << std::fixed << std::setprecision(1)
-                << sig.RawToPhys(sig.Decode(data));
+            value = sig.RawToPhys(sig.Decode(data));
+            // get formatted val
+            if (value == 0) {
+                valStream << "0";
+            } else if (value == std::floor(value)) {
+                valStream << static_cast<int>(value);
+            } else {
+                valStream << std::fixed << std::setprecision(1)
+                    << sig.RawToPhys(sig.Decode(data));
+            }
 
             extractedData = timeStamp + ": "
                 + sig.Name() + ": "
