@@ -146,13 +146,13 @@ void parseData(
         for (const dbcppp::ISignal& sig : msg->Signals()) {
             value = sig.RawToPhys(sig.Decode(data));
             // get formatted val
-            if (value == 0) {
+            if (static_cast<int>(value) == 0) {
                 valStream << "0";
             } else if (value == std::floor(value)) {
                 valStream << static_cast<int>(value);
             } else {
                 valStream << std::fixed << std::setprecision(1)
-                    << sig.RawToPhys(sig.Decode(data));
+                    << value;
             }
 
             extractedData = timeStamp + ": "
@@ -172,5 +172,6 @@ uint8_t convertToHex(char c) {
     if (c >= '0' && c <= '9') return c - '0';
     if (c >= 'A' && c <= 'F') return 10 + (c - 'A');
     if (c >= 'a' && c <= 'f') return 10 + (c - 'a');
-    throw std::invalid_argument("Invalid hex character");
+    std::cout << "Invalid hex character\n";
+    exit(1);
 }
