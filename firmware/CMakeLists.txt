@@ -1,12 +1,14 @@
 cmake_minimum_required(VERSION 3.22)
 
 project(firmware)
-set(Boost_DEBUG 1)
 
 add_subdirectory(dbcppp)
+add_subdirectory(Catch2)
 add_subdirectory(solution)
+add_subdirectory(tests)
 
 target_link_libraries(answer PRIVATE dbcppp)
+target_link_libraries(tests PRIVATE Catch2 dbcppp)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dbcppp/include)
 

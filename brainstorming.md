@@ -84,6 +84,19 @@ LINKS I USED TO RESEARCH:
 [PCIe wiki](https://en.wikipedia.org/wiki/PCI_Express)
 
 [CAN Bus wiki](https://en.wikipedia.org/wiki/CAN_bus)
+
+the ST website is designed so bad :(    
+
+#### STAGE 3 
+I don't think I will have time to finish all the tests :( 
+
+To run tests:
+docker compose up
+docker exec -it {container-name} bash 
+cd build/tests 
+./tests
+
+
 ## Spyder
 
 ## Cloud

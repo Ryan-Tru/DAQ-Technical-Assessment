@@ -7,9 +7,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Executable
-add_executable(answer main.cpp)
+add_executable(answer main.cpp canParser.cpp)
 
 target_include_directories(answer PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/../dbcppp/include
 )
 
