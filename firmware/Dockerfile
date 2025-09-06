@@ -20,6 +20,6 @@ RUN cd build/ && cmake -DCMAKE_BUILD_TYPE=Release ..
 
 RUN cd build/ && make -j    
 
-ENTRYPOINT ["./build/solution/answer"]
-# ENTRYPOINT ["bash"]
+# ENTRYPOINT ["./build/solution/answer"]
+ENTRYPOINT ["bash"]
 

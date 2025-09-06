@@ -2,7 +2,59 @@ Use this file to write your answer to Stage 2 of the firmware tasks.
 
 CAN
 Q1:
+The CAN bus protocol offers a robust networking solution with inbuilt error
+handling. It offers flexible connection, as it is multi-nodal and not point to
+point. 
+
+CAN VS SPI:
+    - CAN is more suitable for this project as it is multi nodal, instead of
+      SPI's point to point connection 
+    - SPI is unsuitable for long distance connections, often only existing on
+      the same pcb. CAN on the other hand excels at long distance
+      communication. 
+    - CAN is more reliable as it is less susceptible to noise, whereas SPI is
+      very susceptible to noise/interference. 
+
+CAN VS USB: 
+    - CAN is much easier to wire than USB. CAN_H and CAN_L vs USB's P, D+, D-,
+      and G.
+    - USB only supports short distances ~= 5 meters.
+    - USB is only point to point. 
+
+CAN VS PCIe:
+    - Little tolerance for transmission errors, because it it not built for
+      communication over long distances.
+    - Also only point to point connections.
+
 
 Q2:
+Redback may choose to use the CAN bus protocol, as it is suitable for real-time
+applications such as vehicles. The CAN bus protocol also offers multi-node
+connections, which is suitable for a project like redback racing as there are
+many components that make up a car. CAN is also very robust, offering in built
+error checking, confinement, and differential signalling. CAN is also easier to
+wire, as it is not point to point.
 
 STM32 Chip Selection
+
+I have chosen the STM32F779NI.
+
+found here:
+    https://www.st.com/en/microcontrollers-microprocessors/stm32f779ni.html#st_description_sec-nav-tab
+
+I have chosen it because it meets all the requirements.
+It has Ethernet support, 3 A/D converters, it has USB support, it includes 12
+16-bit timers AND 2 32 bit timers, 2048kB of flash size, and 3 CAN 2.0 buses.
+
+This chip just meets requirements, and does not exceed it.
+
+It requires 1.7v to 3.6v of power
+It is 13mmx13mmx1.2mm in size.
+
+From digikey.com it is $38.67 AUD excluding shipping for a single unit. They
+offer bulk pricing though and free shipping over $60 AUD (10 units at $31.0570
+AUD, 25 units for $29.1532, etc.)  
+
+From STMicroelectronics it is $20.84 USD which is roughly $31.65 AUD excluding
+shipping. With shipping from STMicroelectronics is $26.83 USD which is $40.72
+AUD.

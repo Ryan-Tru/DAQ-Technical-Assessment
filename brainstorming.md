@@ -4,7 +4,7 @@ This file is used to document your thoughts, approaches and research conducted a
 
 ## Firmware
 
-#### TASK 1
+#### STAGE 1
 I had some trouble setting/building libraries.
 like not finding Boost package for cmake.
 
@@ -67,6 +67,23 @@ and
 
 I also decided to use docker cp to get the output file, as seemed more simple.
 
+When I checked the output.txt file I found that I was getting 0.0 and -0.0. I
+printed out the raw values and found that it was giving me 0.000001 etc. At
+first, I tried to see if checking val > -0.9999999999 && val < 0.9999999999
+would work, but I realise that you could have values that do not satisfy those
+conditions, so I decided instead to cast it to an int val, and check it against
+zero. (int casting from double just drops whatever is after the point e.g.
+0.0001 becomes 0)
+
+#### STAGE 2 
+LINKS I USED TO RESEARCH:
+[SPI Vs CAN](https://embetronicx.com/uncategorized/spi-vs-can-choosing-the-right-protocol-for-your-project/#SPI_vs_CAN)
+
+[5 Advantages Of CAN](https://www.totalphase.com/blog/2019/08/5-advantages-of-can-bus-protocol/)
+
+[PCIe wiki](https://en.wikipedia.org/wiki/PCI_Express)
+
+[CAN Bus wiki](https://en.wikipedia.org/wiki/CAN_bus)
 ## Spyder
 
 ## Cloud
